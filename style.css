@@ -57,9 +57,11 @@ button{
 }
 
 body{
-    border: solid black 1px;
-    height: auto;
+    display: flex;
+    
+    height: 90vh;
     justify-content: center;
+    align-items: center;
 }
 
 .backspace, .AC{
