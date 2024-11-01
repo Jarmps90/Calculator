@@ -31,7 +31,7 @@
     
 }
 
-.operants{
+#operants{
    
    display: flex;
    flex-wrap: wrap;
