@@ -12,5 +12,16 @@ operantsBtns.forEach((button) => {
 
 };
 
+function getOperatorsBtns(){
+const operatrosBtns = operators.querySelectorAll('button');
 
-calcBtns()
+    operatrosBtns.forEach((button) => {
+        button.addEventListener('click', () => {
+            console.log(button.id)
+        });
+    });
+};
+
+
+getCalcBtns();
+getOperatorsBtns();
