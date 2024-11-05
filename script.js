@@ -5,8 +5,8 @@ const operantsBtns = operants.querySelectorAll('button');
 
 operantsBtns.forEach((button) => {
     button.addEventListener('click', () => {
-    console.log(button.id)
-        return button.id
+    console.log(button.textContent)
+      numbDispaly.textContent = button.textContent
     });
 });
 
