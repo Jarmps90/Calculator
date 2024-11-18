@@ -1,12 +1,16 @@
 const numbDispaly = document.querySelector('#display');
+let currentNumber = '';
+let previousNumber = null;
+let value = null;
 
 function getCalcBtns() {
 const operantsBtns = operants.querySelectorAll('button');
 
 operantsBtns.forEach((button) => {
     button.addEventListener('click', () => {
-    console.log(button.textContent)
-      numbDispaly.textContent = button.textContent
+    console.log(button.id)
+      currentNumber += button.textContent
+      updateDisplay(currentNumber)
     });
 });
 
@@ -17,11 +21,20 @@ const operatrosBtns = operators.querySelectorAll('button');
 
     operatrosBtns.forEach((button) => {
         button.addEventListener('click', () => {
-            console.log(button.id)
+            numbDispaly.textContent = '0';
+            previousNumber = parseFloat(currentNumber);
+            if (typeof previousNumber === 'number') {
+                currentNumber = '';
+            }
         });
     });
 };
 
+function updateDisplay(currentNumber) {
+   
+    numbDispaly.textContent = currentNumber;
+}
 
 getCalcBtns();
 getOperatorsBtns();
+
