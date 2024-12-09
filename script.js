@@ -9,7 +9,6 @@ const operantsBtns = document.querySelectorAll('#operants button');
 
 operantsBtns.forEach((button) => {
     button.addEventListener('click', () => {
-    console.log(button.id)
       currentNumber += button.id
       numbDispaly.textContent = currentNumber;
     });
