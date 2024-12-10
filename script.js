@@ -34,7 +34,7 @@ function getEquals() {
         currentNumber = parseFloat(currentNumber);
         operate(currentNumber, operator, previousNumber)
     }
-    currentNumber = value;
+    currentNumber = Math.round(value * 100) / 100;
 };
 
 function updateDisplay(value) {
@@ -61,7 +61,7 @@ function operate(currentNumber, operator, previousNumber) {
     };
 
 console.log(value)
-updateDisplay(value)
+updateDisplay(value);
     
 };
 
