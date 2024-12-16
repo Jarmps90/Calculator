@@ -1,4 +1,4 @@
-const numbDispaly = document.querySelector('#display');
+const numbDisplay = document.querySelector('#display');
 let currentNumber = '';
 let previousNumber = null;
 let value = null;
@@ -10,7 +10,8 @@ const operantsBtns = document.querySelectorAll('#operants button');
 operantsBtns.forEach((button) => {
     button.addEventListener('click', () => {
       currentNumber += button.id
-      numbDispaly.textContent = currentNumber;
+      numbDisplay.textContent = currentNumber;
+
     });
 });
 
@@ -24,22 +25,28 @@ const operatrosBtns = document.querySelectorAll('#operators button');
             operator = button.id;
             previousNumber = parseFloat(currentNumber);
             currentNumber = '';
+            
         });
     });
 };
 
 function getEquals() {
-
-    if(currentNumber !== '') {
-        currentNumber = parseFloat(currentNumber);
-        operate(currentNumber, operator, previousNumber)
-    }
-    currentNumber = Math.round(value * 100) / 100;
+    const equalsBtn = equals.querySelector('button');
+    equalsBtn.addEventListener('click', () => {  
+        if(currentNumber !== '') {
+            currentNumber = parseFloat(currentNumber);
+            operate(currentNumber, operator, previousNumber);
+            
+        };
+     });
+   
+    
 };
 
 function updateDisplay(value) {
-    
-    numbDispaly.textContent = value;
+    currentNumber = Math.round(value * 100) / 100;
+    currentNumber = value;
+    console.log(value)
 };
 
 function operate(currentNumber, operator, previousNumber) {
@@ -54,17 +61,19 @@ function operate(currentNumber, operator, previousNumber) {
             value = previousNumber * currentNumber;
             break;
         case '/':
+            if(currentNumber === 0) {
+                numbDisplay.textContent = 'ERROR';
+                return alert('Dividing by zero is not allowed!');
+            }
             value = previousNumber / currentNumber;
             break;
         default:
             value = null;
-    };
+        }
 
-console.log(value)
-updateDisplay(value);
-    
+    updateDisplay(value);
 };
 
 getCalcBtns();
 getOperatorsBtns();
-
+getEquals();
