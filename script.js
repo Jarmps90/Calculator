@@ -3,13 +3,15 @@ let currentNumber = '';
 let previousNumber = null;
 let value = null;
 let operator = null;
+let currentValue;
 
 function getCalcBtns() {
     const operantsBtns = document.querySelectorAll('#operants button');
     operantsBtns.forEach((button) => {
         button.addEventListener('click', () => {
             currentNumber += button.id
-            numbDisplay.textContent = currentNumber;    
+            numbDisplay.textContent = currentNumber;
+            
         });
     });
 };
@@ -32,6 +34,7 @@ function getEquals() {
             currentNumber = parseFloat(currentNumber);
             operate(currentNumber, operator, previousNumber);
         };
+    
     });
 };
 
@@ -70,7 +73,7 @@ getOperatorsBtns();
 getEquals();
 
 //Need to find a workoround if user presses multiple times operator. 
-//Find a way how do to that if user clicks number after first calcultion that numbers dont add but value will reset instead.
+//Find a way how do if user clicks number after first calcultion that numbers dont add but value will reset instead.
 //Find a way how to implement . button and that works by only once it is clicked.
 //Add reset button functionality.
 //Add backspace functionality.
