@@ -3,7 +3,7 @@ let currentNumber = '';
 let previousNumber = null;
 let value = null;
 let operator = null;
-let currentValue;
+
 
 function getCalcBtns() {
     const operantsBtns = document.querySelectorAll('#operants button');
@@ -21,30 +21,33 @@ function getOperatorsBtns(){
     operatrosBtns.forEach((button) => {
         button.addEventListener('click', () => {
             operator = button.id;
-            previousNumber = parseFloat(currentNumber);
+            previousNumber = currentNumber;
             currentNumber = '';
+            //if currentNumber is number and previousNumber is a number 
+            //then 
         });
     });
 };
 
+
+
 function getEquals() {
     const equalsBtn = equals.querySelector('button');
     equalsBtn.addEventListener('click', () => {  
-        if(currentNumber !== '') {
-            currentNumber = parseFloat(currentNumber);
-            operate(currentNumber, operator, previousNumber);
-        };
-    
+        operate(currentNumber, operator, previousNumber);
     });
 };
 
 function updateDisplay(value) {
     numbDisplay.textContent = Math.round(value * 100) / 100;
     currentNumber = value;
-    console.log(value)
+   
 };
 
 function operate(currentNumber, operator, previousNumber) {
+    previousNumber = parseFloat(previousNumber);
+    currentNumber = parseFloat(currentNumber);
+   
     switch(operator) {
         case '+':
             value = previousNumber + currentNumber;
