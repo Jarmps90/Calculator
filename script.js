@@ -31,6 +31,7 @@ function getOperatorsBtns(){
 
 
 
+
 function getEquals() {
     const equalsBtn = equals.querySelector('button');
     equalsBtn.addEventListener('click', () => {  
