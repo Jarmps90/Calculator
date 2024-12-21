@@ -3,15 +3,18 @@ let currentNumber = '';
 let previousNumber = null;
 let value = null;
 let operator = null;
+let calculated = false;
 
 
 function getCalcBtns() {
     const operantsBtns = document.querySelectorAll('#operants button');
     operantsBtns.forEach((button) => {
         button.addEventListener('click', () => {
+            if(calculated === true) {
+                clear()
+            };
             currentNumber += button.id
             numbDisplay.textContent = currentNumber;
-            
         });
     });
 };
@@ -36,6 +39,7 @@ function getEquals() {
     const equalsBtn = equals.querySelector('button');
     equalsBtn.addEventListener('click', () => {  
         operate(currentNumber, operator, previousNumber);
+        calculated = true;
     });
 };
 
@@ -80,11 +84,19 @@ function allClear() {
     operator = null;
 };
 
+function clear() {
+    numbDisplay.textContent = '';
+    currentNumber = '';
+    value = null;
+    previousNumber = null;
+    operator = null;
+    calculated = false;
+};
+
 getCalcBtns();
 getOperatorsBtns();
 getEquals();
 
 //Need to find a workoround if user presses multiple times operator. 
-//Find a way how do if user clicks number after first calcultion that numbers dont add but value will reset instead.
 //Find a way how to stop multiple '.' button clicks. 
 //Add backspace functionality.
