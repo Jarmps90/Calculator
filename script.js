@@ -72,6 +72,14 @@ function operate(currentNumber, operator, previousNumber) {
 updateDisplay(value);
 };
 
+function allClear() {
+    numbDisplay.textContent = 0;
+    currentNumber = '';
+    value = null;
+    previousNumber = null;
+    operator = null;
+};
+
 getCalcBtns();
 getOperatorsBtns();
 getEquals();
@@ -79,5 +87,4 @@ getEquals();
 //Need to find a workoround if user presses multiple times operator. 
 //Find a way how do if user clicks number after first calcultion that numbers dont add but value will reset instead.
 //Find a way how to stop multiple '.' button clicks. 
-//Add reset button functionality.
 //Add backspace functionality.
