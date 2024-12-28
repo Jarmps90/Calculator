@@ -6,6 +6,7 @@ let operator = null;
 let calculated = false;
 
 
+
 function getCalcBtns() {
     const operantsBtns = document.querySelectorAll('#operants button');
     operantsBtns.forEach((button) => {
@@ -15,9 +16,12 @@ function getCalcBtns() {
             };
             currentNumber += button.id
             numbDisplay.textContent = currentNumber;
+            
         });
     });
 };
+
+
 
 function getOperatorsBtns(){
     const operatrosBtns = document.querySelectorAll('#operators button');
@@ -26,8 +30,7 @@ function getOperatorsBtns(){
             operator = button.id;
             previousNumber = currentNumber;
             currentNumber = '';
-            //if currentNumber is number and previousNumber is a number 
-            //then 
+            calculated = false;
         });
     });
 };
@@ -40,6 +43,7 @@ function getEquals() {
     equalsBtn.addEventListener('click', () => {  
         operate(currentNumber, operator, previousNumber);
         calculated = true;
+    
     });
 };
 
@@ -76,6 +80,13 @@ function operate(currentNumber, operator, previousNumber) {
 updateDisplay(value);
 };
 
+function backspace() {
+    value = value.slice(0, -1);
+    currentNumber = currentNumber.slice(0, -1);
+    numbDisplay.textContent = currentNumber;
+    numbDisplay.textContent = value;
+};
+
 function allClear() {
     numbDisplay.textContent = 0;
     currentNumber = '';
@@ -93,10 +104,12 @@ function clear() {
     calculated = false;
 };
 
+
+
 getCalcBtns();
 getOperatorsBtns();
 getEquals();
 
-//Need to find a workoround if user presses multiple times operator. 
+//Find a way to stop user clicking operator for multiple times.
 //Find a way how to stop multiple '.' button clicks. 
 //Add backspace functionality.
