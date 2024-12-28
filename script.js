@@ -43,7 +43,6 @@ function getEquals() {
     equalsBtn.addEventListener('click', () => {  
         operate(currentNumber, operator, previousNumber);
         calculated = true;
-    
     });
 };
 
@@ -81,10 +80,17 @@ updateDisplay(value);
 };
 
 function backspace() {
-    value = value.slice(0, -1);
-    currentNumber = currentNumber.slice(0, -1);
-    numbDisplay.textContent = currentNumber;
-    numbDisplay.textContent = value;
+    if(typeof currentNumber == 'number') {
+        currentNumber = currentNumber.toString().slice(0, -1);
+        numbDisplay.textContent = currentNumber;
+        calculated = false
+    } else {
+        currentNumber = currentNumber.slice(0, -1);
+        numbDisplay.textContent = currentNumber;
+    }
+    
+    
+   
 };
 
 function allClear() {
@@ -112,4 +118,3 @@ getEquals();
 
 //Find a way to stop user clicking operator for multiple times.
 //Find a way how to stop multiple '.' button clicks. 
-//Add backspace functionality.
