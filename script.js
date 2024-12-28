@@ -117,4 +117,5 @@ getOperatorsBtns();
 getEquals();
 
 //Find a way to stop user clicking operator for multiple times.
-//Find a way how to stop multiple '.' button clicks. 
+//Find a way how to stop multiple '.' button clicks. And 
+//Find a way how to remove leading zero when needed. And find way how to not do remove zero.  
