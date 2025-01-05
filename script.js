@@ -27,10 +27,17 @@ function getOperatorsBtns(){
     const operatrosBtns = document.querySelectorAll('#operators button');
     operatrosBtns.forEach((button) => {
         button.addEventListener('click', () => {
-            operator = button.id;
-            previousNumber = currentNumber;
-            currentNumber = '';
-            calculated = false;
+           
+            if(operator) {
+                calculated = true;
+                operate(currentNumber, operator, previousNumber);
+                operator = null;
+            } else {
+                operator = button.id;
+                previousNumber = currentNumber;
+                currentNumber = '';
+                calculated = false;
+            }
         });
     });
 };
@@ -116,6 +123,7 @@ getCalcBtns();
 getOperatorsBtns();
 getEquals();
 
+//Find a way to evaluate only one pair of number.
 //Find a way to stop user clicking operator for multiple times.
 //Find a way how to stop multiple '.' button clicks. And 
 //Find a way how to remove leading zero when needed. And find way how to not do remove zero.  
