@@ -123,7 +123,7 @@ getCalcBtns();
 getOperatorsBtns();
 getEquals();
 
-//Find a way to evaluate only one pair of number.
+//Find a way to evaluate only one pair of number.(Yes it works however, now it evaluates every time when operator is clicked )
 //Find a way to stop user clicking operator for multiple times.
 //Find a way how to stop multiple '.' button clicks. And 
 //Find a way how to remove leading zero when needed. And find way how to not do remove zero.  
