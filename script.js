@@ -27,12 +27,16 @@ function getOperatorsBtns(){
     operatrosBtns.forEach((button) => {
         button.addEventListener('click', () => {
             operator = button.id;
-            previousNumber = currentNumber;
-            currentNumber = '';
+            convertNumbers()
             calculated = false;
         });
     });
 };
+
+function convertNumbers() {
+    previousNumber = currentNumber;
+    currentNumber = '';
+}
 
 
 
