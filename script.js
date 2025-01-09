@@ -14,8 +14,13 @@ function getCalcBtns() {
             if(calculated === true) {
                 clear()
             };
+            if (typeof currentNumber == 'number') {
+                convertNumbers()
+            }
             currentNumber += button.id
             numbDisplay.textContent = currentNumber;
+            
+            
         });
     });
 };
@@ -26,9 +31,18 @@ function getOperatorsBtns(){
     const operatrosBtns = document.querySelectorAll('#operators button');
     operatrosBtns.forEach((button) => {
         button.addEventListener('click', () => {
-            operator = button.id;
-            convertNumbers()
-            calculated = false;
+            if (operator == null) {
+                operator = button.id;
+                convertNumbers()
+                calculated = false;
+            } else {
+                operator = button.id;
+                calculated = true;
+            };
+            if(calculated == true) {
+                operate(currentNumber, operator, previousNumber)
+            }
+            
         });
     });
 };
@@ -120,6 +134,5 @@ getOperatorsBtns();
 getEquals();
 
 //Find a way to evaluate only one pair of number.
-//Find a way to stop user clicking operator for multiple times.
 //Find a way how to stop multiple '.' button clicks.
 //Find a way how to remove leading zero when needed. And find way how to not do remove zero.  
