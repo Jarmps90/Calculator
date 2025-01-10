@@ -37,7 +37,7 @@ function getOperatorsBtns(){
                 calculated = false;
             } else {
                 operator = button.id;
-                calculated = true;
+                calculated = false;
             };
             if(calculated == true) {
                 operate(currentNumber, operator, previousNumber)
