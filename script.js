@@ -20,7 +20,6 @@ function getCalcBtns() {
             currentNumber += button.id
             numbDisplay.textContent = currentNumber;
             
-            
         });
     });
 };
@@ -35,11 +34,11 @@ function getOperatorsBtns(){
                 operator = button.id;
                 convertNumbers()
                 calculated = false;
+                
             } else {
                 operator = button.id;
                 calculated = false;
             };
-            
         });
     });
 };
