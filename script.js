@@ -39,9 +39,6 @@ function getOperatorsBtns(){
                 operator = button.id;
                 calculated = false;
             };
-            if(calculated == true) {
-                operate(currentNumber, operator, previousNumber)
-            }
             
         });
     });
