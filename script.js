@@ -4,8 +4,7 @@ let previousNumber = null;
 let value = null;
 let operator = null;
 let calculated = false;
-
-
+let operatorCount = 0;
 
 function getCalcBtns() {
     const operantsBtns = document.querySelectorAll('#operants button');
@@ -19,25 +18,31 @@ function getCalcBtns() {
             }
             currentNumber += button.id
             numbDisplay.textContent = currentNumber;
-            
         });
     });
 };
 
-
-
 function getOperatorsBtns(){
     const operatrosBtns = document.querySelectorAll('#operators button');
+    
     operatrosBtns.forEach((button) => {
         button.addEventListener('click', () => {
             if (operator == null) {
                 operator = button.id;
                 convertNumbers()
                 calculated = false;
-                
+                operatorCount++;
             } else {
                 operator = button.id;
                 calculated = false;
+                operatorCount++;
+            };
+            if(operatorCount >= 2) {
+                operatorCount = 0;
+                operate(currentNumber, operator, previousNumber)
+            } else if (typeof previousNumber == 'number') {
+                operatorCount = 0;
+                operate(currentNumber, operator, previousNumber)
             };
         });
     });
@@ -47,9 +52,6 @@ function convertNumbers() {
     previousNumber = currentNumber;
     currentNumber = '';
 }
-
-
-
 
 function getEquals() {
     const equalsBtn = equals.querySelector('button');
@@ -62,13 +64,11 @@ function getEquals() {
 function updateDisplay(value) {
     numbDisplay.textContent = Math.round(value * 100) / 100;
     currentNumber = value;
-   
 };
 
 function operate(currentNumber, operator, previousNumber) {
     previousNumber = parseFloat(previousNumber);
     currentNumber = parseFloat(currentNumber);
-   
     switch(operator) {
         case '+':
             value = previousNumber + currentNumber;
@@ -88,7 +88,7 @@ function operate(currentNumber, operator, previousNumber) {
         default:
             value = null;
     }
-
+operatorCount = 0;
 updateDisplay(value);
 };
 
@@ -101,9 +101,6 @@ function backspace() {
         currentNumber = currentNumber.slice(0, -1);
         numbDisplay.textContent = currentNumber;
     }
-    
-    
-   
 };
 
 function allClear() {
@@ -112,6 +109,7 @@ function allClear() {
     value = null;
     previousNumber = null;
     operator = null;
+    operatorCount = 0;
 };
 
 function clear() {
@@ -123,12 +121,10 @@ function clear() {
     calculated = false;
 };
 
-
-
 getCalcBtns();
 getOperatorsBtns();
 getEquals();
 
-//Find a way to evaluate only one pair of number.
+
 //Find a way how to stop multiple '.' button clicks.
 //Find a way how to remove leading zero when needed. And find way how to not do remove zero.  
