@@ -37,7 +37,7 @@ function getOperatorsBtns(){
                 calculated = false;
                 operatorCount++;
             };
-            if(operatorCount >= 2) {
+            if(previousNumber !== '' && currentNumber !== '' && operatorCount > 1) {
                 operatorCount = 0;
                 operate(currentNumber, operator, previousNumber)
             } else if (typeof previousNumber == 'number') {
