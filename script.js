@@ -14,11 +14,11 @@ function getCalcBtns() {
                 clear()
             } else if (typeof currentNumber == 'number') {
                 convertNumbers()
-            }
-            if (button.id == '.')
+            } else if (button.id == '.')
                 if(currentNumber == '') {
                     currentNumber = '0';
                 }
+            
             currentNumber += button.id
             numbDisplay.textContent = currentNumber;
            
@@ -132,4 +132,4 @@ getEquals();
 
 
 //Find a way how to stop multiple '.' button clicks.
-
+//
