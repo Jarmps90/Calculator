@@ -132,4 +132,4 @@ getEquals();
 
 
 //Find a way how to stop multiple '.' button clicks.
-//
+//Stop the display overflow. 
