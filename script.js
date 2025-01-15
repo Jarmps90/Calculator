@@ -14,10 +14,15 @@ function getCalcBtns() {
                 clear()
             } else if (typeof currentNumber == 'number') {
                 convertNumbers()
-            };
-            
+            }
+            if (button.id == '.')
+                if(currentNumber == '') {
+                    currentNumber = '0';
+                }
             currentNumber += button.id
             numbDisplay.textContent = currentNumber;
+           
+            
         });
     });
 };
@@ -127,4 +132,4 @@ getEquals();
 
 
 //Find a way how to stop multiple '.' button clicks.
-//Find a way how to remove leading zero when needed. And find way how to not do remove zero.  
+
