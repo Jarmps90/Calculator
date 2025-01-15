@@ -5,14 +5,16 @@
 }
 
 #display{
+    
     display: flex;
-    justify-content: end;
-    align-items: center;
-   margin: 5px;
-    width: auto;
+    justify-content: flex-end;
+    margin: 5px;
+    width: 239px;
     height: 50px;
     font-size: 3em;
     border: solid black 1px;
+    flex-wrap: wrap;
+    
 }
 
 #topBtns{
