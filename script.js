@@ -12,10 +12,10 @@ function getCalcBtns() {
         button.addEventListener('click', () => {
             if(calculated === true) {
                 clear()
-            };
-            if (typeof currentNumber == 'number') {
+            } else if (typeof currentNumber == 'number') {
                 convertNumbers()
-            }
+            };
+            
             currentNumber += button.id
             numbDisplay.textContent = currentNumber;
         });
