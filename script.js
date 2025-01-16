@@ -1,10 +1,12 @@
 const numbDisplay = document.querySelector('#display');
+const decimal = document.querySelector('#dot button');
 let currentNumber = '';
 let previousNumber = null;
 let value = null;
 let operator = null;
 let calculated = false;
 let operatorCount = 0;
+
 
 function getCalcBtns() {
     const operantsBtns = document.querySelectorAll('#operants button');
@@ -14,18 +16,33 @@ function getCalcBtns() {
                 clear()
             } else if (typeof currentNumber == 'number') {
                 convertNumbers()
-            } else if (button.id == '.')
-                if(currentNumber == '') {
+            } else if (button.id == '.') {
+                if (currentNumber == ''|| typeof value == 'number') {
                     currentNumber = '0';
                 }
-            
-            currentNumber += button.id
+            }   
+            decimalDot();   
+            currentNumber += button.id;
             numbDisplay.textContent = currentNumber;
-           
-            
+                     
         });
     });
 };
+                
+function decimalDot() {
+    const decimal = document.querySelector('#dot button');
+        decimal.addEventListener('click', () => {
+            //thing through where are you disabling "."  
+            if(numbDisplay.textContent.includes('.') || currentNumber.includes('.')) {
+                decimal.disabled = true;
+            } else {
+                decimal.disabled = false;
+            }
+        });
+};
+           
+           
+   
 
 function getOperatorsBtns(){
     const operatrosBtns = document.querySelectorAll('#operators button');
@@ -37,17 +54,20 @@ function getOperatorsBtns(){
                 convertNumbers()
                 calculated = false;
                 operatorCount++;
+                decimal.disabled = false;
             } else {
                 operator = button.id;
                 calculated = false;
                 operatorCount++;
+                decimal.disabled = false;
             };
+            //look into if statment parmeters and correct them
             if(previousNumber !== '' && currentNumber !== '' && operatorCount > 1) {
-                operatorCount = 0;
                 operate(currentNumber, operator, previousNumber)
+                return operatorCount = 0;
             } else if (typeof previousNumber == 'number') {
-                operatorCount = 0;
                 operate(currentNumber, operator, previousNumber)
+                return operatorCount = 0;
             };
         });
     });
@@ -93,6 +113,7 @@ function operate(currentNumber, operator, previousNumber) {
         default:
             value = null;
     }
+decimal.disabled = false;
 operatorCount = 0;
 updateDisplay(value);
 };
@@ -115,6 +136,7 @@ function allClear() {
     previousNumber = null;
     operator = null;
     operatorCount = 0;
+    decimal.disabled = false;
 };
 
 function clear() {
@@ -124,6 +146,7 @@ function clear() {
     previousNumber = null;
     operator = null;
     calculated = false;
+    decimal.disabled = false;
 };
 
 getCalcBtns();
@@ -131,5 +154,6 @@ getOperatorsBtns();
 getEquals();
 
 
-//Find a way how to stop multiple '.' button clicks.
-//Stop the display overflow. 
+
+
+//Find a way how to stop the display overflow. 
