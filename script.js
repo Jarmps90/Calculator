@@ -16,9 +16,12 @@ function getCalcBtns() {
                 clear()
             } else if (typeof currentNumber == 'number') {
                 convertNumbers()
+            
             } else if (button.id == '.') {
-                if (currentNumber == ''|| typeof value == 'number') {
+                if (currentNumber == '') {
                     currentNumber = '0';
+                } else if (typeof value == 'number') {
+                     currentNumber = numbDisplay.textContent + '.';
                 }
             }   
             decimalDot();   
@@ -32,7 +35,7 @@ function getCalcBtns() {
 function decimalDot() {
     const decimal = document.querySelector('#dot button');
         decimal.addEventListener('click', () => {
-            //thing through where are you disabling "."  
+            //think through where are you disabling "."  
             if(numbDisplay.textContent.includes('.') || currentNumber.includes('.') ) {
                 decimal.disabled = true;
             } else {
@@ -59,16 +62,9 @@ function getOperatorsBtns(){
                 operator = button.id;
                 calculated = false;
                 operatorCount++;
-                
             };
-            //look into if statment parmeters and correct them
-            if(previousNumber !== '' && currentNumber !== '' && operatorCount > 1) {
-                operate(currentNumber, operator, previousNumber)
-                return operatorCount = 0;
-            } else if (typeof previousNumber == 'number') {
-                operate(currentNumber, operator, previousNumber)
-                return operatorCount = 0;
-            };
+            
+            
         });
     });
 };
@@ -121,7 +117,7 @@ updateDisplay(value);
 
 function backspace() {
     if(typeof currentNumber == 'number') {
-        currentNumber = currentNumber.toString().slice(0, -1);
+        currentNumber = currentNumber.toFixed(2).toString().slice(0, -1);
         numbDisplay.textContent = currentNumber;
         calculated = false
     } else {
