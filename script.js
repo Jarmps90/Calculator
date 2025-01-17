@@ -33,7 +33,7 @@ function decimalDot() {
     const decimal = document.querySelector('#dot button');
         decimal.addEventListener('click', () => {
             //thing through where are you disabling "."  
-            if(numbDisplay.textContent.includes('.') || currentNumber.includes('.')) {
+            if(numbDisplay.textContent.includes('.') || currentNumber.includes('.') ) {
                 decimal.disabled = true;
             } else {
                 decimal.disabled = false;
@@ -54,12 +54,12 @@ function getOperatorsBtns(){
                 convertNumbers()
                 calculated = false;
                 operatorCount++;
-                decimal.disabled = false;
+                
             } else {
                 operator = button.id;
                 calculated = false;
                 operatorCount++;
-                decimal.disabled = false;
+                
             };
             //look into if statment parmeters and correct them
             if(previousNumber !== '' && currentNumber !== '' && operatorCount > 1) {
@@ -76,6 +76,7 @@ function getOperatorsBtns(){
 function convertNumbers() {
     previousNumber = currentNumber;
     currentNumber = '';
+    decimal.disabled = false;
 }
 
 function getEquals() {
@@ -113,7 +114,7 @@ function operate(currentNumber, operator, previousNumber) {
         default:
             value = null;
     }
-decimal.disabled = false;
+
 operatorCount = 0;
 updateDisplay(value);
 };
