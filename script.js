@@ -56,15 +56,16 @@ function getOperatorsBtns(){
                 operator = button.id;
                 convertNumbers()
                 calculated = false;
-                operatorCount++;
-                
+                return operatorCount++;
             } else {
                 operator = button.id;
                 calculated = false;
-                operatorCount++;
-            };
+                return operatorCount++;
+            }; 
+
             
             
+           
         });
     });
 };
