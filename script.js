@@ -153,5 +153,5 @@ getEquals();
 
 
 
-
+//Find second solution to evaluating first pair of numbers after operator button press.
 //Find a way how to stop the display overflow. 
