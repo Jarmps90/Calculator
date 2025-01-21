@@ -5,7 +5,8 @@ let previousNumber = null;
 let value = null;
 let operator = null;
 let calculated = false;
-let operatorCount = 0;
+
+
 
 
 function getCalcBtns() {
@@ -31,6 +32,8 @@ function getCalcBtns() {
         });
     });
 };
+
+
                 
 function decimalDot() {
     const decimal = document.querySelector('#dot button');
@@ -56,18 +59,20 @@ function getOperatorsBtns(){
                 operator = button.id;
                 convertNumbers()
                 calculated = false;
-                return operatorCount++;
+                
             } else {
                 operator = button.id;
                 calculated = false;
-                return operatorCount++;
+                
             }; 
-
-            
-            
-           
         });
     });
+};
+
+function  calculatorArray() {
+	let operantArray = [previousNumber, currentNumber]
+	let operatorArray =  [operator];
+	console.log(operatorArray, operantArray[0,1])
 };
 
 function convertNumbers() {
