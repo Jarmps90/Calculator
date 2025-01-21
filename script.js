@@ -72,7 +72,7 @@ function getOperatorsBtns(){
 function  calculatorArray() {
 	let operantArray = [previousNumber, currentNumber]
 	let operatorArray =  [operator];
-	console.log(operatorArray, operantArray[0,1])
+	console.log(operatorArray, operantArray[1])
 };
 
 function convertNumbers() {
