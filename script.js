@@ -52,7 +52,7 @@ function decimalDot() {
 
 function getOperatorsBtns(){
     const operatrosBtns = document.querySelectorAll('#operators button');
-    
+    let oldOperator = 0;
     operatrosBtns.forEach((button) => {
         button.addEventListener('click', () => {
             if (operator == null) {
@@ -66,22 +66,24 @@ function getOperatorsBtns(){
                 operatorCount++
             }; 
             if (currentNumber != ' ' && previousNumber != ' ' && operatorCount > 1) {
+                oldOperator = operator;
                 operatorCount = 0;
-                return calculatorArray()
+                return calculatorArray(oldOperator);
                 
             } else if (typeof previousNumber === 'number') {
+                oldOperator = operator;
                 operatorCount = 0;
-                return calculatorArray()
+                return calculatorArray(oldOperator);
             };  
         });
     });
 };
 
-function  calculatorArray() {
-	let calcArray = [previousNumber, operator, currentNumber]
-	//let operatorArray =  [operator];
+function  calculatorArray(oldOperator) {
+	let calcArray = [previousNumber, currentNumber]
+	let operatorArray =  [oldOperator];
     operatorCount = 0
-	operate(calcArray[0], calcArray[1], calcArray[2] );
+	return operate(calcArray[0], operatorArray[0], calcArray[1]);
 };
 
 function convertNumbers() {
