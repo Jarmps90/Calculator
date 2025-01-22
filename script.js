@@ -5,7 +5,7 @@ let previousNumber = null;
 let value = null;
 let operator = null;
 let calculated = false;
-
+let operatorCount = 0;
 
 
 
@@ -59,20 +59,29 @@ function getOperatorsBtns(){
                 operator = button.id;
                 convertNumbers()
                 calculated = false;
-                
+                operatorCount++
             } else {
                 operator = button.id;
                 calculated = false;
-                
+                operatorCount++
             }; 
+            if (currentNumber != ' ' && previousNumber != ' ' && operatorCount > 1) {
+                operatorCount = 0;
+                return calculatorArray()
+                
+            } else if (typeof previousNumber === 'number') {
+                operatorCount = 0;
+                return calculatorArray()
+            };  
         });
     });
 };
 
 function  calculatorArray() {
-	let operantArray = [previousNumber, currentNumber]
-	let operatorArray =  [operator];
-	console.log(operatorArray, operantArray[1])
+	let calcArray = [previousNumber, operator, currentNumber]
+	//let operatorArray =  [operator];
+    operatorCount = 0
+	operate(calcArray[0], calcArray[1], calcArray[2] );
 };
 
 function convertNumbers() {
