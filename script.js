@@ -67,11 +67,13 @@ function getOperatorsBtns(){
             }; 
             if (currentNumber != ' ' && previousNumber != ' ' && operatorCount > 1) {
                 oldOperator = operator;
+                operator = '';
                 operatorCount = 0;
                 return calculatorArray(oldOperator);
                 
             } else if (typeof previousNumber === 'number') {
                 oldOperator = operator;
+                operator = '';
                 operatorCount = 0;
                 return calculatorArray(oldOperator);
             };  
