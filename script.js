@@ -6,6 +6,8 @@ let value = null;
 let operator = null;
 let calculated = false;
 let operatorCount = 0;
+let calcArray = [];
+let operatorArray =  [];
 
 
 
@@ -28,7 +30,7 @@ function getCalcBtns() {
             decimalDot();   
             currentNumber += button.id;
             numbDisplay.textContent = currentNumber;
-                     
+            
         });
     });
 };
@@ -60,32 +62,25 @@ function getOperatorsBtns(){
                 convertNumbers()
                 calculated = false;
                 operatorCount++
+                calculatorArray()
             } else {
                 operator = button.id;
                 calculated = false;
                 operatorCount++
+                calculatorArray()
             }; 
-            if (currentNumber != ' ' && previousNumber != ' ' && operatorCount > 1) {
-                oldOperator = operator;
-                operator = '';
-                operatorCount = 0;
-                return calculatorArray(oldOperator);
-                
-            } else if (typeof previousNumber === 'number') {
-                oldOperator = operator;
-                operator = '';
-                operatorCount = 0;
-                return calculatorArray(oldOperator);
-            };  
+            
         });
     });
 };
 
-function  calculatorArray(oldOperator) {
-	let calcArray = [previousNumber, currentNumber]
-	let operatorArray =  [oldOperator];
-    operatorCount = 0
-	return operate(calcArray[0], operatorArray[0], calcArray[1]);
+function  calculatorArray() {
+	
+    
+    
+        calcArray.push(previousNumber,currentNumber);
+        operatorArray.push(operator);
+    
 };
 
 function convertNumbers() {
