@@ -7,7 +7,7 @@ let operator = null;
 let calculated = false;
 let operatorCount = 0;
 let calcArray = [];
-let operatorArray =  [];
+let operatorArray = [];
 
 
 
@@ -62,12 +62,12 @@ function getOperatorsBtns(){
                 convertNumbers()
                 calculated = false;
                 operatorCount++
-                calculatorArray()
+                
             } else {
                 operator = button.id;
                 calculated = false;
                 operatorCount++
-                calculatorArray()
+                
             }; 
             
         });
@@ -76,10 +76,10 @@ function getOperatorsBtns(){
 
 function  calculatorArray() {
 	
+    calcArray.push(previousNumber);
+    operatorArray.push(operator);
     
-    
-        calcArray.push(previousNumber,currentNumber);
-        operatorArray.push(operator);
+        
     
 };
 
