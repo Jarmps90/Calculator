@@ -30,7 +30,7 @@ function getCalcBtns() {
             decimalDot();   
             currentNumber += button.id;
             numbDisplay.textContent = currentNumber;
-            
+            calcArray.push(currentNumber);
         });
     });
 };
@@ -59,14 +59,14 @@ function getOperatorsBtns(){
         button.addEventListener('click', () => {
             if (operator == null) {
                 operator = button.id;
-                convertNumbers()
+                convertNumbers();
                 calculated = false;
                 operatorCount++
                 
             } else {
                 operator = button.id;
                 calculated = false;
-                operatorCount++
+                operatorCount++;
                 
             }; 
             
@@ -76,8 +76,8 @@ function getOperatorsBtns(){
 
 function  calculatorArray() {
 	
-    calcArray.push(previousNumber);
-    operatorArray.push(operator);
+    calcArray.push();
+    operatorArray.push();
     
         
     
@@ -100,6 +100,7 @@ function getEquals() {
 function updateDisplay(value) {
     numbDisplay.textContent = Math.round(value * 100) / 100;
     currentNumber = value;
+    
 };
 
 function operate(currentNumber, operator, previousNumber) {
