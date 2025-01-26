@@ -11,8 +11,10 @@ let operatorArray = [];
 
 
 
+
 function getCalcBtns() {
     const operantsBtns = document.querySelectorAll('#operants button');
+    
     operantsBtns.forEach((button) => {
         button.addEventListener('click', () => {
             if(calculated === true) {
@@ -55,13 +57,14 @@ function decimalDot() {
 
 function getOperatorsBtns(){
     const operatrosBtns = document.querySelectorAll('#operators button');
-    let oldOperator = 0;
+    
     operatrosBtns.forEach((button) => {
         button.addEventListener('click', () => {
             if (operator == null) {
                 operator = button.id;
                 convertNumbers();
                 operatorArray.push(operator);
+                
                 calculated = false;
                 operatorCount++
                 
@@ -71,6 +74,14 @@ function getOperatorsBtns(){
                 calculated = false;
                 operatorCount++;
             }; 
+            if (currentNumber != ' ' && previousNumber != ' ' && operatorCount > 1) {
+                operatorCount = 0;
+                return operate(calcArray[1], operatorArray[0], calcArray[0]);
+                
+            } else if (typeof previousNumber === 'number') {
+                operatorCount = 0;
+                return operate(calcArray[1], operatorArray[1], calcArray[0]);
+            };  
             
         });
     });
@@ -146,6 +157,8 @@ function allClear() {
     operator = null;
     operatorCount = 0;
     decimal.disabled = false;
+    calcArray = [];
+    operatorArray = [];
 };
 
 function clear() {
@@ -156,6 +169,7 @@ function clear() {
     operator = null;
     calculated = false;
     decimal.disabled = false;
+    
 };
 
 getCalcBtns();
