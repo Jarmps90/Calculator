@@ -31,6 +31,7 @@ function getCalcBtns() {
             currentNumber += button.id;
             numbDisplay.textContent = currentNumber;
             calcArray.push(currentNumber);
+            
         });
     });
 };
@@ -60,28 +61,22 @@ function getOperatorsBtns(){
             if (operator == null) {
                 operator = button.id;
                 convertNumbers();
+                operatorArray.push(operator);
                 calculated = false;
                 operatorCount++
                 
             } else {
                 operator = button.id;
+                operatorArray.push(operator);
                 calculated = false;
                 operatorCount++;
-                
             }; 
             
         });
     });
 };
 
-function  calculatorArray() {
-	
-    calcArray.push();
-    operatorArray.push();
-    
-        
-    
-};
+
 
 function convertNumbers() {
     previousNumber = currentNumber;
@@ -94,13 +89,15 @@ function getEquals() {
     equalsBtn.addEventListener('click', () => {  
         operate(currentNumber, operator, previousNumber);
         calculated = true;
+
     });
 };
 
 function updateDisplay(value) {
     numbDisplay.textContent = Math.round(value * 100) / 100;
     currentNumber = value;
-    
+    calcArray = [];
+    calcArray.push(value);
 };
 
 function operate(currentNumber, operator, previousNumber) {
