@@ -64,7 +64,6 @@ function getOperatorsBtns(){
                 operator = button.id;
                 convertNumbers();
                 operatorArray.push(operator);
-                
                 calculated = false;
                 operatorCount++
                 
@@ -74,7 +73,7 @@ function getOperatorsBtns(){
                 calculated = false;
                 operatorCount++;
             }; 
-            if (currentNumber != ' ' && previousNumber != ' ' && operatorCount > 1) {
+            if (calculated == false && operatorCount > 1) {
                 operatorCount = 0;
                 return operate(calcArray[1], operatorArray[0], calcArray[0]);
                 
@@ -133,7 +132,7 @@ function operate(currentNumber, operator, previousNumber) {
         default:
             value = null;
     }
-
+operatorArray.shift();
 operatorCount = 0;
 updateDisplay(value);
 };
