@@ -108,6 +108,9 @@ function updateDisplay(value) {
     currentNumber = value;
     calcArray = [];
     calcArray.push(value);
+    if(numbDisplay.textContent == NaN || numbDisplay.textContent == Infinity) {
+        allClear()
+    }
 };
 
 function operate(currentNumber, operator, previousNumber) {
