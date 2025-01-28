@@ -73,7 +73,7 @@ function getOperatorsBtns(){
                 calculated = false;
                 operatorCount++;
             }; 
-            if (calculated == false && operatorCount > 1) {
+            if (currentNumber.length > 0 && previousNumber.length > 0 && operatorCount > 1) {
                 operatorCount = 0;
                 return operate(calcArray[1], operatorArray[0], calcArray[0]);
                 
