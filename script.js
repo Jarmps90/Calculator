@@ -77,7 +77,7 @@ function getOperatorsBtns(){
                 operatorCount = 0;
                 return operate(calcArray[1], operatorArray[0], calcArray[0]);
                 
-            } else if (typeof previousNumber === 'number') {
+            } else if (typeof previousNumber === 'number' && currentNumber.length > 0) {
                 operatorCount = 0;
                 return operate(calcArray[1], operatorArray[1], calcArray[0]);
             };  
@@ -177,5 +177,5 @@ getEquals();
 
 
 
-//Find second solution to evaluating first pair of numbers after operator button press.
+
 //Find a way how to stop the display overflow. 
