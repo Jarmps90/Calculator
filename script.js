@@ -142,9 +142,15 @@ updateDisplay(value);
 
 function backspace() {
     if(typeof currentNumber == 'number') {
-        currentNumber = currentNumber.toFixed(2).toString().slice(0, -1);
+        if(currentNumber = currentNumber.includes('.')) {
+        currentNumber = currentNumber.fixed(2).toString().slice(0, -1);
         numbDisplay.textContent = currentNumber;
         calculated = false
+        } else {
+        currentNumber = currentNumber.toString().slice(0, -1);
+        numbDisplay.textContent = currentNumber;
+        calculated = false
+        }
     } else {
         currentNumber = currentNumber.slice(0, -1);
         numbDisplay.textContent = currentNumber;
