@@ -73,13 +73,14 @@ function getOperatorsBtns(){
                 calculated = false;
                 operatorCount++;
             }; 
+            //evaluation single pair of numbers logic
             if (currentNumber.length > 0 && previousNumber.length > 0 && operatorCount > 1) {
                 operatorCount = 0;
                 return operate(calcArray[1], operatorArray[0], calcArray[0]);
                 
             } else if (typeof previousNumber === 'number' && currentNumber.length > 0) {
                 operatorCount = 0;
-                return operate(calcArray[1], operatorArray[1], calcArray[0]);
+                return operate(calcArray[1], operatorArray[0], calcArray[0]);
             };  
             
         });
@@ -121,10 +122,7 @@ function operate(currentNumber, operator, previousNumber) {
             value = previousNumber + currentNumber;
             break;
         case '-':
-            value = previousNumber - currentNumber;
-            break;
-        case '*':
-            value = previousNumber * currentNumber;
+            value = previousNumber - currentNumber;typeof currentNumber == 'number'
             break;
         case '/':
             if(currentNumber === 0) {
@@ -141,8 +139,12 @@ updateDisplay(value);
 };
 
 function backspace() {
-    if(typeof currentNumber == 'number') {
-        
+    if(typeof currentNumber == 'number' && numbDisplay.textContent.includes('.')) {
+        currentNumber = currentNumber.toFixed(2).slice(0, -1);
+        numbDisplay.textContent = currentNumber;
+    } else if (typeof currentNumber == 'number') {
+        currentNumber = currentNumber.toString().slice(0, -1);
+        numbDisplay.textContent = currentNumber;
     } else {
         currentNumber = currentNumber.slice(0, -1);
         numbDisplay.textContent = currentNumber;
