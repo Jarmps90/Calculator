@@ -17,22 +17,27 @@ function getCalcBtns() {
     
     operantsBtns.forEach((button) => {
         button.addEventListener('click', () => {
-            if(calculated === true) {
-                clear()
-            } else if (typeof currentNumber == 'number') {
-                convertNumbers()
-            
-            } else if (button.id == '.') {
-                if (currentNumber == '') {
-                    currentNumber = '0';
-                } else if (typeof value == 'number') {
-                     currentNumber = numbDisplay.textContent + '.';
-                }
-            }   
-            decimalDot();   
-            currentNumber += button.id;
-            numbDisplay.textContent = currentNumber;
-            calcArray.push(currentNumber);
+            if (currentNumber.length > 9) {
+                button.removeEventListener('click', getCalcBtns);
+            } else {
+                if(calculated === true) {
+                    clear()
+                } else if (typeof currentNumber == 'number') {
+                    convertNumbers()
+                
+                } else if (button.id == '.') {
+                    if (currentNumber == '') {
+                        currentNumber = '0';
+                    } else if (typeof value == 'number') {
+                         currentNumber = numbDisplay.textContent + '.';
+                    }
+                }   
+                decimalDot();   
+                currentNumber += button.id;
+                numbDisplay.textContent = currentNumber;
+                calcArray.push(currentNumber);
+                
+            }
             
         });
     });
