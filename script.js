@@ -127,7 +127,10 @@ function operate(currentNumber, operator, previousNumber) {
             value = previousNumber + currentNumber;
             break;
         case '-':
-            value = previousNumber - currentNumber;typeof currentNumber == 'number'
+            value = previousNumber - currentNumber;
+            break;
+        case '*':
+            value = previousNumber * currentNumber;
             break;
         case '/':
             if(currentNumber === 0) {
