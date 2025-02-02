@@ -30,13 +30,13 @@ function getCalcBtns() {
                 } else if (button.id == '.' && typeof currentNumber == 'number') {
                  currentNumber = '0';
                 };  
-                }   
+                  
                 decimalDot();   
                 currentNumber += button.id;
                 numbDisplay.textContent = currentNumber;
                 calcArray.push(currentNumber);
-                
-            });
+            };
+        });
     });
 };
 
