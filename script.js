@@ -24,24 +24,22 @@ function getCalcBtns() {
                     clear()
                 } else if (typeof currentNumber == 'number') {
                     convertNumbers()
-                
-                } else if (button.id == '.') {
-                    if (currentNumber == '') {
-                        currentNumber = '0';
-                    } else if (typeof value == 'number') {
-                         currentNumber = numbDisplay.textContent + '.';
-                    }
+                };
+                if (button.id == '.' && currentNumber == '') {
+                    currentNumber = '0';
+                } else if (button.id == '.' && typeof currentNumber == 'number') {
+                 currentNumber = '0';
+                };  
                 }   
                 decimalDot();   
                 currentNumber += button.id;
                 numbDisplay.textContent = currentNumber;
                 calcArray.push(currentNumber);
                 
-            }
-            
-        });
+            });
     });
 };
+
 
 
                 
@@ -54,6 +52,7 @@ function decimalDot() {
             } else {
                 decimal.disabled = false;
             }
+            
         });
 };
            
@@ -77,6 +76,7 @@ function getOperatorsBtns(){
                 operatorArray.push(operator);
                 calculated = false;
                 operatorCount++;
+                decimal.disabled = false;
             }; 
             //evaluation single pair of numbers logic
             if (currentNumber.length > 0 && previousNumber.length > 0 && operatorCount > 1) {
@@ -105,7 +105,7 @@ function getEquals() {
     equalsBtn.addEventListener('click', () => {  
         operate(currentNumber, operator, previousNumber);
         calculated = true;
-
+        decimal.disabled = false;
     });
 };
 
@@ -186,4 +186,4 @@ getEquals();
 
 
 
-//Find a way how to stop the display overflow. 
+//Find a way how to dispaly biger answer on display
