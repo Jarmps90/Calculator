@@ -112,8 +112,15 @@ function getEquals() {
 function updateDisplay(value) {
     numbDisplay.textContent = Math.round(value * 100) / 100;
     currentNumber = value;
+    value = value.toString();
     calcArray = [];
     calcArray.push(value);
+
+    if (value.length < 9) {
+        display.style.cssText = 'color:blue';
+    } else if (value.length > 9){
+        display.style.cssText = 'color:red; font-size: 5vh;'
+    }
     if(numbDisplay.textContent == NaN || numbDisplay.textContent == Infinity) {
         allClear()
     }
