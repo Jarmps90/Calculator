@@ -115,12 +115,11 @@ function updateDisplay(value) {
     value = value.toString();
     calcArray = [];
     calcArray.push(value);
-
-    if (value.length < 9) {
-        display.style.cssText = 'color:blue';
-    } else if (value.length > 9){
-        display.style.cssText = 'color:red; font-size: 5vh;'
-    }
+    
+    value.length >= 19 ? numbDisplay.style.cssText = 'font-size: 24px;'
+        : value.length >= 9 ? numbDisplay.style.cssText = 'font-size: 25px;' 
+        : numbDisplay.style.cssText = 'font-size: 48px;'
+    
     if(numbDisplay.textContent == NaN || numbDisplay.textContent == Infinity) {
         allClear()
     }
@@ -150,6 +149,7 @@ function operate(currentNumber, operator, previousNumber) {
     }
 operatorArray.shift();
 operatorCount = 0;
+value = Math.round(value * 100) / 100;
 updateDisplay(value);
 };
 
