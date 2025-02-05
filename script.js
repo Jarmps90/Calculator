@@ -9,9 +9,6 @@ let operatorCount = 0;
 let calcArray = [];
 let operatorArray = [];
 
-
-
-
 function getCalcBtns() {
     const operantsBtns = document.querySelectorAll('#operants button');
     
@@ -30,23 +27,20 @@ function getCalcBtns() {
                 } else if (button.id == '.' && typeof currentNumber == 'number') {
                  currentNumber = '0';
                 };  
-                  
                 decimalDot();   
                 currentNumber += button.id;
                 numbDisplay.textContent = currentNumber;
                 calcArray.push(currentNumber);
+                numbDisplay.style.cssText = 'font-size: 48px;'
             };
         });
     });
 };
 
-
-
-                
 function decimalDot() {
     const decimal = document.querySelector('#dot button');
         decimal.addEventListener('click', () => {
-            //think through where are you disabling "."  
+            
             if(numbDisplay.textContent.includes('.') || currentNumber.includes('.') ) {
                 decimal.disabled = true;
             } else {
@@ -56,9 +50,6 @@ function decimalDot() {
         });
 };
            
-           
-   
-
 function getOperatorsBtns(){
     const operatrosBtns = document.querySelectorAll('#operators button');
     
@@ -70,7 +61,6 @@ function getOperatorsBtns(){
                 operatorArray.push(operator);
                 calculated = false;
                 operatorCount++
-                
             } else {
                 operator = button.id;
                 operatorArray.push(operator);
@@ -78,7 +68,7 @@ function getOperatorsBtns(){
                 operatorCount++;
                 decimal.disabled = false;
             }; 
-            //evaluation single pair of numbers logic
+            
             if (currentNumber.length > 0 && previousNumber.length > 0 && operatorCount > 1) {
                 operatorCount = 0;
                 return operate(calcArray[1], operatorArray[0], calcArray[0]);
@@ -91,8 +81,6 @@ function getOperatorsBtns(){
         });
     });
 };
-
-
 
 function convertNumbers() {
     previousNumber = currentNumber;
@@ -116,7 +104,8 @@ function updateDisplay(value) {
     calcArray = [];
     calcArray.push(value);
     
-    value.length >= 19 ? numbDisplay.style.cssText = 'font-size: 24px;'
+    value.length >= 20 ? numbDisplay.style.cssText = 'font-size: 20px;'
+        : value.length >= 19 ? numbDisplay.style.cssText = 'font-size: 24px;'
         : value.length >= 9 ? numbDisplay.style.cssText = 'font-size: 25px;' 
         : numbDisplay.style.cssText = 'font-size: 48px;'
     
@@ -147,10 +136,10 @@ function operate(currentNumber, operator, previousNumber) {
         default:
             value = null;
     }
-operatorArray.shift();
-operatorCount = 0;
-value = Math.round(value * 100) / 100;
-updateDisplay(value);
+    operatorArray.shift();
+    operatorCount = 0;
+    value = Math.round(value * 100) / 100;
+    updateDisplay(value);
 };
 
 function backspace() {
@@ -186,14 +175,8 @@ function clear() {
     operator = null;
     calculated = false;
     decimal.disabled = false;
-    
 };
 
 getCalcBtns();
 getOperatorsBtns();
 getEquals();
-
-
-
-
-//Find a way how to dispaly biger answer on display
