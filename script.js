@@ -156,6 +156,7 @@ function backspace() {
 };
 
 function allClear() {
+    numbDisplay.style.cssText = 'font-size: 48px;'
     numbDisplay.textContent = 0;
     currentNumber = '';
     value = null;
@@ -168,6 +169,7 @@ function allClear() {
 };
 
 function clear() {
+    numbDisplay.style.cssText = 'font-size: 48px;'
     numbDisplay.textContent = '';
     currentNumber = '';
     value = null;
