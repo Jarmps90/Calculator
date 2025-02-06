@@ -14,7 +14,7 @@ function getCalcBtns() {
     
     operantsBtns.forEach((button) => {
         button.addEventListener('click', () => {
-            if (currentNumber.length > 9) {
+            if (currentNumber.length >= 8) {
                 button.removeEventListener('click', getCalcBtns);
             } else {
                 if(calculated === true) {
@@ -104,9 +104,9 @@ function updateDisplay(value) {
     calcArray = [];
     calcArray.push(value);
     
-    value.length >= 20 ? numbDisplay.style.cssText = 'font-size: 20px;'
-        : value.length >= 19 ? numbDisplay.style.cssText = 'font-size: 24px;'
-        : value.length >= 9 ? numbDisplay.style.cssText = 'font-size: 25px;' 
+    value.length >= 30 ? numbDisplay.style.cssText = 'font-size: 15px;'
+        : value.length >= 19 ? numbDisplay.style.cssText = 'font-size: 18px;'
+        : value.length >= 9 ? numbDisplay.style.cssText = 'font-size: 24px;' 
         : numbDisplay.style.cssText = 'font-size: 48px;'
     
     if(numbDisplay.textContent == NaN || numbDisplay.textContent == Infinity) {
